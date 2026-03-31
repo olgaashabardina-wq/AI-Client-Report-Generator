@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёт по заказу дизайна сайта</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7fbff;
+            color: #243447;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2563eb, #7dd3fc);
+            color: white;
+            padding: 28px;
+            border-radius: 18px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: #eef7ff;
+            border-left: 6px solid #7db7ff;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4a78c2;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .field {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Отчёт по заказу дизайна сайта</h1>
+        <p>Компания: {{ data.client_company }}</p>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Основные данные</div>
+        <div class="field"><span class="label">Клиент:</span> {{ data.client_name }}</div>
+        <div class="field"><span class="label">Тип проекта:</span> {{ data.project_type }}</div>
+        <div class="field"><span class="label">Настроение:</span> {{ data.mood }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Пожелания к дизайну</div>
+        <div class="field"><span class="label">Стиль:</span> {{ data.style_preferences }}</div>
+        <div class="field"><span class="label">Целевая аудитория:</span> {{ data.target_audience }}</div>
+        <div class="field"><span class="label">Страницы:</span> {{ data.pages }}</div>
+        <div class="field"><span class="label">Обязательные блоки:</span> {{ data.required_blocks }}</div>
+        <div class="field"><span class="label">Срок:</span> {{ data.deadline }}</div>
+        <div class="field"><span class="label">Бюджет:</span> {{ data.budget }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Сгенерированный пример дизайна</div>
+        {% if data.generated_image %}
+            <img src="{{ data.generated_image }}" alt="Generated website concept">
+        {% else %}
+            <p>Изображение не было сгенерировано.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

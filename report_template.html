@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёт по диалогу с клиентом</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7fbff;
+            color: #243447;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2563eb, #7dd3fc);
+            color: white;
+            padding: 28px 32px;
+            border-radius: 18px;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .card {
+            background: #eef7ff;
+            border-left: 6px solid #7db7ff;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4a78c2;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+        }
+
+        .client-name {
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 14px;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 13px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: #dff4e4;
+            color: #2f7d4d;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .field {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #3a5a8f;
+        }
+
+        .highlight-box {
+            background: #fff7db;
+            border: 2px solid #f1d36b;
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        ul {
+            margin: 10px 0 0 20px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 12px;
+            color: #6b7b8f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Отчёт по диалогу с клиентом</h1>
+        <p>Дата генерации: {{ data.dialog_date }}</p>
+    </div>
+
+    <div class="card">
+        <div class="client-name">{{ data.client_name }}</div>
+        <div class="badge">{{ data.mood }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Информация о клиенте</div>
+        <div class="field"><span class="label">Компания:</span> {{ data.client_company }}</div>
+        <div class="field"><span class="label">Должность / роль:</span> {{ data.client_position }}</div>
+        <div class="field"><span class="label">Менеджер:</span> {{ data.manager_name }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Тема разговора</div>
+        <div class="field">{{ data.topic }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Основной запрос</div>
+        <div class="highlight-box">
+            <div class="field"><span class="label">Запрос клиента:</span> {{ data.main_request }}</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Бизнес-цель</div>
+        <div class="field">{{ data.business_goal }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Сроки и стоимость</div>
+        <div class="field"><span class="label">Желаемый срок:</span> {{ data.deadline }}</div>
+        <div class="field"><span class="label">Стоимость / бюджет:</span> {{ data.budget }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Что обязательно должно быть в продукте</div>
+        <div class="field">{{ data.required_features }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Целевая аудитория</div>
+        <div class="field">{{ data.target_audience }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Боли клиента</div>
+        <div class="field">{{ data.pain_points }}</div>
+    </div>
+
+    <div class="card">
+        <div class="section-title">Рекомендуемые следующие шаги</div>
+        <ul>
+            {% for step in data.next_steps %}
+                <li>{{ step }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="footer">
+        AI Client Report Generator
+    </div>
+
+</body>
+</html>

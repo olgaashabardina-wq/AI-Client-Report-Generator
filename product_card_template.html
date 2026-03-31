@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Карточка товара</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #1f2937;
+            background: #eef6ff;
+        }
+
+        .page {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #dbeafe;
+        }
+
+        .hero {
+            padding: 24px;
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+            text-align: center;
+        }
+
+        .hero img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #1d4ed8;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            color: #dc2626;
+        }
+
+        .description-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2563eb;
+        }
+
+        .description {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .placeholder {
+            padding: 40px;
+            text-align: center;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="hero">
+            {% if data.generated_image %}
+                <img src="{{ data.generated_image }}" alt="Product image">
+            {% else %}
+                <div class="placeholder">Изображение товара не было сгенерировано</div>
+            {% endif %}
+        </div>
+
+        <div class="content">
+            <div class="title">{{ data.product_name }}</div>
+            <div class="price">
+                {% if "руб" in data.price.lower() %}
+                    {{ data.price }}
+                {% else %}
+                    {{ data.price }} руб.
+                {% endif %}
+            </div>
+
+            <div class="description-title">Описание</div>
+            <div class="description">{{ data.description }}</div>
+        </div>
+    </div>
+</body>
+</html>
