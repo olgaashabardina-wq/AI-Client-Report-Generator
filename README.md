@@ -132,7 +132,20 @@ AI_Client_Report_Generator/
 │   └── pdf_generator.py
 │
 ├── logs/
+
+## Требования, запуск и проверка
+
+Для работы проекта нужны: Python 3.10+, `pip`, API-ключ OpenAI, Telegram Bot Token и зависимости из `requirements.txt`.
+
+Установка зависимостей:
+
+```bash
+pip install -r requirements.txt
 │   └── .gitkeep
-│
+│Локальный запуск:
+python main.py
+
+Запуск Telegram-бота:
+python bot.py
 └── temp_uploads/
 
